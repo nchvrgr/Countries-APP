@@ -1,5 +1,84 @@
 .activity{
-    background-color: blue;
+    background-color: rgba(255, 255, 255, 0.315);
     display: inline-block;
     margin: 20px;
+    padding: 20px;
+    border: solid 3px rgba(255, 255, 255, 0.568);
+    border-radius: 20px;
+    width: 300px;
+}
+
+.details{
+    display: block;
+    text-align: left;
+    margin-left: 30px;
+}
+
+.activCountries{
+    display: flex;
+    padding: 5px;
+    margin: 5px;
+    justify-content: space-around;
+}
+
+.country{    
+    color: whitesmoke;
+    margin: 10px;
+}
+
+.volver{
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+.selectCountries{
+    border: solid 1px rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.274);
+    height: 200px;
+    outline: none;
+}
+
+.form{
+    text-align: left;
+    padding: 5px;
+}
+
+.body{
+    text-align: center;
+}
+
+.create{
+    color: white;
+    border: solid 3px rgba(255, 255, 255, 0.527);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 30px;
+    text-align: center;
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.24);
+}
+
+.inputs{
+    background-color: rgba(255, 255, 255, 0.24);
+    border: solid 1px rgb(255, 255, 255);
+    margin: 5px;
+    padding: 2px;
+    outline: none;
+    border-radius: 5px;
+}
+
+.button{
+    background-color: rgba(255, 255, 255, 0.377);
+    border: solid 1px rgb(224, 224, 224);
+    font-size: 15px;
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 7px;
+    align-self: center;
+    color: white;
+    font-size: 18px;
 }

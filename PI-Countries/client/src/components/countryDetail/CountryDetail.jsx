@@ -13,24 +13,29 @@ function CountryDetail(props) {
 	}, []);
     var id = props.match.params.id;
     var country = useSelector(state => state.countryDetail);
-
-
     return (
         <>
-            <div>
+            <div className={style.all}>
                 {country?<div className={style.country}>
-                    <div>
-                        <h1>{country.name}</h1>
-                        <h4>Continent: {country.continent}</h4>
-                        <h4>Capital: {country.capital}</h4>
-                        <h4>Area: {country.area}</h4>
-                        <h4>Population: {country.population}</h4>
-                        <h4>Subregion: {country.subregion}</h4>
+                    <div className={style.text}>
+                        <div>
+                            <h1>{country.name}</h1>
+                        </div>
+                        <div className={style.details}>
+                            <h4>Continent: {country.continent}</h4>
+                            <h4>Capital: {country.capital}</h4>
+                            <h4>Area: {country.area}</h4>
+                            <h4>Population: {country.population}</h4>
+                            <h4>Subregion: {country.subregion}</h4>
+                        </div>
                     </div>
                     <div>
                         <img src={country.image} className={style.image}/>
                     </div>
                 </div>:<p>THIS COUNTRY IS NOT AVAILABLE</p>}
+            </div>
+            <div className={style.volverDiv}>
+                <Link to="/home" className={style.volver}>Volver</Link>
             </div>
             <div>
                 <h1>Activities:</h1>
@@ -42,9 +47,9 @@ function CountryDetail(props) {
                         return(
                             <div className={style.activity} key={activity.id}>
                                 <h1>{activity.name}</h1>
-                                <p>{activity.duration}</p>
-                                <p>{activity.difficulty}</p>
-                                <p>{activity.season}</p>
+                                <p>Duration: {activity.duration} hours</p>
+                                <p>Difficulty: {activity.difficulty}</p>
+                                <p>Season: {activity.season}</p>
                             </div>
                         )
                     }

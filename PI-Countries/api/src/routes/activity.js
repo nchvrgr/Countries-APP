@@ -8,8 +8,9 @@ process.on('unhandledRejection', (err, p) => {
 });
 
 router.post("/", async (req, res) => {
-  const { name, difficulty, duration, season, country } = req.query;
-  if (!name || !difficulty || !duration || !season || !country) {
+  const { name, difficulty, duration, season, countries } = req.body;
+  console.log(req.body);
+  if (!name || !difficulty || !duration || !season || !countries) {
     res.status(404).send("Not enough data provided");
   } else {
     try {
@@ -18,11 +19,22 @@ router.post("/", async (req, res) => {
         difficulty,
         duration,
         season,
-        country
+        countries
       })
       .then(
         activity => {
-            activity.addCountry(country);
+            console.log(countries);
+            if (Array.isArray(countries)){
+              console.log("is array!")
+              for (country of countries){
+                console.log(country);
+                activity.addCountry(countries);
+              }
+            }else{
+              console.log("Is a string")
+              activity.addCountry(countries);
+              console.log(activity)
+            }
             return activity;
           }
       )

@@ -25,8 +25,9 @@ export function getIds(arr){
 }
 
 export function postActivity (activity) {
+	console.log("actions activity:", activity);
     return async function () {
-         await axios.post(`http://localhost:3001/activity?name=${activity.name}&season=${activity.season}&difficulty=${activity.difficulty}&duration=${activity.duration}&country=${activity.countries}`);
+         await axios.post(`http://localhost:3001/activity`, activity);
     };  
 }
 export function getActivities(){

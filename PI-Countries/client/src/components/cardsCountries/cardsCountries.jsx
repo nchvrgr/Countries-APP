@@ -10,7 +10,9 @@ function CardsCountries() {
 
 	const [page, setPage] = useState(0);
 	const [order, setOrder] = useState("alphAsc");
+	const [activity, setActivity] = useState(0);
 	const [continent, setContinent] = useState();
+	const [select, setSelect] = useState(0);
 	const dispatch = useDispatch();
 	var countries = useSelector( state => state.countries );
 	var activities = useSelector( state => state.activities);
@@ -69,11 +71,31 @@ function CardsCountries() {
 		default:
 			break;
 	}
+
 	function continentChange(event) {
 		setContinent(event.target.selectedOptions[0].innerHTML);
 		setPage(0);
 	}
-	console.log("activities:", activities);
+
+	function handleCheck(e){
+		if (e.target.checked){
+			console.log("Checked")
+			setActivity(1);
+			console.log(activity);
+		}else{
+			console.log("unChecked")
+			setActivity(0);
+			console.log(activity);
+		}
+	}
+
+
+	function handleActivity(e){
+		setSelect(activities[e.target.options[e.target.selectedIndex].value].Countries);
+		console.log(select);
+	}
+
+
 	return (
 		<>
 			<div className={style.opciones}>
@@ -99,7 +121,7 @@ function CardsCountries() {
 					</div>
 				</form>
 				<div className={style.selectDiv}>
-					Sort by continent:
+					<span>Sort by continent:</span>
 					<select name="select" onChange={ el => continentChange(el)} className={style.select}>
 						<option value="all">All continents</option>
 						<option value="africa">Africa</option>
@@ -110,14 +132,14 @@ function CardsCountries() {
 						<option value="Polar">Polar</option>
 						<option value="undefined">Undefined</option>
 					</select>
-					Sort by activity:
-					<select name="selectActivity" className={style.select}>
-						<option>Any activities</option>
-						{
+					<input type="checkbox" onChange={e => handleCheck(e)}></input>
+					<span>Sort by activity:</span>
+					<select name="selectActivity" className={style.select} onChange={e => handleActivity(e)}>
+						{	
 							activities?activities.length>0?activities.map(
 								activity => {
 									return(
-										<option key={activity.id}>
+										<option key={activity.id} value={activity.id-1}>
 											{activity.name}
 										</option>
 									)
@@ -128,8 +150,25 @@ function CardsCountries() {
 				</div>
 			</div>
 			<div className={style.cards}>
+				
 				{
-					countries.length>0?countries.slice(page*10, page*10+10).map( country => {
+					activity>0?<div>
+						
+						{select?select.map( country => {
+						return(
+							<Link to={`/countries/${country.id}`} key={++idKey}>
+								<Card
+									className={style.body}
+									name={country.name}
+									flag={country.image}
+									continent={country.continent}
+									></Card>
+							</Link>
+						)
+					}):<p>No countries</p> }
+					
+					
+					</div>:countries.length>0?countries.slice(page*10, page*10+10).map( country => {
 						return(
 							<Link to={`/countries/${country.id}`} key={++idKey}>
 								<Card

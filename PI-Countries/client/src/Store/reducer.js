@@ -3,7 +3,7 @@ import { GET_COUNTRIES , GET_COUNTRIES_NAME, GET_COUNTRY_ID, GET_ACTIVITIES } fr
 const initialState = {
 	countries: [],
 	countryDetail: {},
-	activities: []
+	activities: [] 
 };
 
 const reducer = (state = initialState, action) => {

@@ -23,10 +23,10 @@ router.get('/', async (req, res, next) => {
             }
         } else {
             try {
-                let countries = await Country.findAll({
+                var allCountries = await Country.findAll({
                     include: [Activity]    
                 });
-                return res.json(countries);
+                return res.json(allCountries);
             } catch (error) {
                 console.log("error");
             }
