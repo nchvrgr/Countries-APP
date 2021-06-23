@@ -1,0 +1,40 @@
+.searchBar{
+    background-color: rgba(255, 255, 255, 0.418);
+    border: solid 1px white;
+    width: 80%;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 25px;
+    -webkit-appearance: none;
+    outline: none;
+    color: white;
+    padding: 2px;
+    padding-left: 3px;
+}
+
+input:focus::placeholder {
+    color: transparent;
+  }
+
+::placeholder { 
+    color: rgb(0, 255, 221);
+  }
+
+
+.divSearch{
+    display: flex;
+    justify-content: center;
+}
+
+.button{
+    background-color: rgba(255, 255, 255, 0.233);
+    border: solid 1px white;
+    margin-left: 5px;
+    border-radius: 5px;
+    color: white;   
+    font-size: 20px;
+}
+
+.button:hover{
+    color: rgb(1, 255, 242);
+}

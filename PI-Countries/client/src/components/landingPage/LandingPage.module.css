@@ -1,0 +1,98 @@
+body {
+    align-items: center;
+    padding-top: 5vh;
+    justify-content: center;
+    background-size: 100%;
+}
+
+
+
+.container {
+    width: 160vh;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0);
+    border: 2px solid #ffffffc7;
+    text-align: center;
+    padding: 3vh;
+    border-radius: 7vh;
+    box-shadow: rgba(202, 8, 202, 0.616) 0px 0px 20vh 0px;
+}
+
+#title {
+    background: url(https://wallpaperaccess.com/full/766614.png);
+    background-size: contain;
+    color: #fff;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    padding: 0;
+    -webkit-text-stroke-width: 0.3vh;
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.863);
+    animation-duration: 2500s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
+}
+
+
+@keyframes slidein {
+    from {
+      background-position: 100%;
+    }
+    to {
+      background-position: 5000%;
+    }
+  }
+
+.h1 {
+    font-size: 11rem;
+    font-family: sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width:600px){
+    .form{
+    float: none;
+    text-align: center;
+    align-content: center;
+    }
+    div.title{
+        font-size: 30px;
+    }
+  }
+  @media (min-width:601px) {
+    div.title{
+        font-size: 80px;
+    } 
+  }
+
+.boton{
+    display: inline-block;
+    text-decoration: none;
+    top: 400vh;
+    font-size: 9vh;
+    background-color: rgba(255, 0, 221, 0);
+    color: rgba(56, 242, 255, 0);
+    text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.76);
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
+    border: solid 1px white;
+    padding: 3vh;
+    border-radius: 3vh;
+}
+
+.boton:hover{
+    animation: pop 0.3s linear 1;
+    background-color: rgba(0, 0, 0, 0.219);
+}
+
+@keyframes pop{
+  50%  {transform: scale(0.97);}
+}
+
+
+.botonDiv{
+    margin-top: 15vh;
+    display: flex;
+    justify-content: center;
+}

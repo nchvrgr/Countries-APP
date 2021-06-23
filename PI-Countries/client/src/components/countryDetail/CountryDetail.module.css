@@ -1,0 +1,20 @@
+.image{
+    width: 500px;
+    height: 250px;
+}
+
+.activity{
+    background-color: green;
+    display: inline-block;
+    border: solid 1px black;
+    padding: 20px;
+}
+
+.country{
+    align-items: center;
+    text-align: center;
+    background-color: blue;
+    border: solid 1px black;
+    display: flex;
+    justify-content: space-around;
+}

@@ -1,0 +1,41 @@
+.about{
+    align-content: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+    height: 1000%;
+}
+
+.h1{
+    text-align: center;
+    color: white;
+}
+
+.link{
+    text-decoration: none;
+    color: rgb(0, 225, 255);
+}
+
+.link2{
+    text-decoration: none;
+    color: rgb(0, 225, 255);
+    padding: 20px;
+}
+
+.links{
+    display: flex;
+    justify-content: center;
+}
+
+.text{
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: solid 5px rgba(255, 255, 255, 0.37);
+    padding: 10px;
+    margin: 45px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.178);
+}
+
