@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import CardsCountries from '../cardsCountries/cardsCountries';
 import Search from '../search/Search';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCountries } from '../../Store/actions';
 

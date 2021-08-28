@@ -1,26 +1,27 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getActivities, getCountries } from '../../Store/actions';
+import { Link } from 'react-router-dom';
+import { getActivities, getCountries, getContinent, setContinent } from '../../Store/actions';
 import Card from '../card/Card';
 import style from './cardsCountries.module.css';
-import { Link } from 'react-router-dom';
-import { alphaAsc, alphaDesc, populationAsc, populationDesc, filterAmericas, filterAfrica, filterAsia, filterEurope, filterOceania, filterPolar, filterUndefined } from '../filters/filters'
+import { alphaAsc, alphaDesc, populationAsc, populationDesc} from '../filters/filters'
 
 function CardsCountries() {
-
 	const [page, setPage] = useState(0);
 	const [order, setOrder] = useState("alphAsc");
 	const [activity, setActivity] = useState(0);
-	const [continent, setContinent] = useState();
 	const [select, setSelect] = useState(0);
 	const dispatch = useDispatch();
-	var countries = useSelector( state => state.countries );
+	var countries = useSelector( state => state.countries);
 	var activities = useSelector( state => state.activities);
+
 	useEffect( () => {
 		dispatch(getCountries());
 		dispatch(getActivities());
+		dispatch(getContinent());
 		document.title= "Countries - CountriesApp";
-	}, []	);
+	}, [dispatch]);
+
 	var idKey = 0;
 	function pageNext(){
 		var max = Math.ceil(countries.length/10-1);
@@ -43,58 +44,33 @@ function CardsCountries() {
 			break;
 		case "popDesc":
 			countries = populationDesc(countries);
+			break
 		default:
-			break;
-	}
-	switch (continent) {
-		case "Africa":
-			countries = filterAfrica(countries);
-			break;
-		case "America":
-			countries = filterAmericas(countries);
-			break;
-		case "Asia":
-			countries = filterAsia(countries);
-			break;
-		case "Europe":
-			countries = filterEurope(countries);
-			break;
-		case "Oceania":
-			countries = filterOceania(countries);
-			break;
-		case "Polar":
-			countries = filterPolar(countries);
-			break;
-		case "Undefined":
-			countries = filterUndefined(countries);
-			break;
-		default:
-			break;
+			return;
 	}
 
-	function continentChange(event) {
-		setContinent(event.target.selectedOptions[0].innerHTML);
-		setPage(0);
+	async function continentChange(event) {
+		await dispatch(getCountries());
+		var cont = await event.target.selectedOptions[0].value;
+		if (cont === "all"){
+			await dispatch(getCountries());
+		}else{
+			await dispatch(setContinent(cont));
+		}
+		await setPage(0);
 	}
 
 	function handleCheck(e){
 		if (e.target.checked){
-			console.log("Checked")
 			setActivity(1);
-			console.log(activity);
 		}else{
-			console.log("unChecked")
 			setActivity(0);
-			console.log(activity);
 		}
 	}
 
-
 	function handleActivity(e){
 		setSelect(activities[e.target.options[e.target.selectedIndex].value].Countries);
-		console.log(select);
 	}
-
 
 	return (
 		<>
@@ -103,19 +79,20 @@ function CardsCountries() {
 				<form autoComplete="off">
 					<div className={style.opciones2}>
 						<div className={style.opcion}>
-							<p>Name ▲</p>
+							<p className={style.opcionName}>Name ▲</p>
 							<input name="opcion" type="radio" value="alphAsc" checked={order === "alphAsc"} onChange={e => setOrder(e.currentTarget.value)}></input>
 						</div>
 						<div className={style.opcion}>
-							<p>Name ▼</p>
+							<p className={style.opcionName}>Name ▼</p>
 							<input name="opcion" type="radio" value="alphDesc" checked={order === "alphDesc"} onChange={e => setOrder(e.currentTarget.value)}></input>
 						</div>
+						<br/>
 						<div className={style.opcion}>
-							<p>Population ▲</p>
+							<p className={style.opcionName}>Population ▲</p>
 							<input name="opcion" type="radio" value="popAsc" checked={order === "popAsc"} onChange={e => setOrder(e.currentTarget.value)}></input>
 						</div>
 						<div className={style.opcion}>
-							<p>Population ▼</p>
+							<p className={style.opcionName}>Population ▼</p>
 							<input name="opcion" type="radio" value="popDesc" checked={order === "popDesc"} onChange={e => setOrder(e.currentTarget.value)}></input>
 						</div>
 					</div>
@@ -124,18 +101,18 @@ function CardsCountries() {
 					<span>Sort by continent:</span>
 					<select name="select" onChange={ el => continentChange(el)} className={style.select}>
 						<option value="all">All continents</option>
-						<option value="africa">Africa</option>
-						<option value="america">America</option>
-						<option value="asia">Asia</option>
-						<option value="europe">Europe</option>
-						<option value="oceania">Oceania</option>
+						<option value="Africa">Africa</option>
+						<option value="Americas">Americas</option>
+						<option value="Asia">Asia</option>
+						<option value="Europe">Europe</option>
+						<option value="Oceania">Oceania</option>
 						<option value="Polar">Polar</option>
-						<option value="undefined">Undefined</option>
+						<option value="Undefined">Undefined</option>
 					</select>
 					<input type="checkbox" onChange={e => handleCheck(e)}></input>
 					<span>Sort by activity:</span>
 					<select name="selectActivity" className={style.select} onChange={e => handleActivity(e)}>
-						{	
+						{
 							activities?activities.length>0?activities.map(
 								activity => {
 									return(
@@ -148,12 +125,11 @@ function CardsCountries() {
 						}
 					</select>
 				</div>
-			</div>
+				</div>
 			<div className={style.cards}>
-				
+
 				{
 					activity>0?<div>
-						
 						{select?select.map( country => {
 						return(
 							<Link to={`/countries/${country.id}`} key={++idKey}>
@@ -165,8 +141,10 @@ function CardsCountries() {
 									></Card>
 							</Link>
 						)
-					}):<p>No countries</p> }
+					}):
 					
+					<p>No countries</p> }
+				
 					
 					</div>:countries.length>0?countries.slice(page*10, page*10+10).map( country => {
 						return(
@@ -182,6 +160,7 @@ function CardsCountries() {
 						}
 					)
 					:<p>No country found</p>
+					
 				}
 				<div className={style.page}>
 					<button onClick={pagePrev} className={style.pageButtons}>←</button>
@@ -191,6 +170,7 @@ function CardsCountries() {
 			</div>
 		</>
 	);
+	
 }
 
 

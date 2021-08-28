@@ -23,6 +23,10 @@ export function populationDesc(array){
     });
 }
 
+export function filterAll(array, continent){
+    return array.filter(country => country.continent === continent);
+}
+
 export function filterAmericas(array){
     return array.filter( country => country.continent === "Americas");
 }

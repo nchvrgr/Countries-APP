@@ -18,30 +18,24 @@ const data = async () => {
 
 //  2 )  TRAIGO LOS DATOS DEL OBJETO CONVERTIDO A LA DB
 
-async function apiToDB() {
-	let empty = Country.count();
+async function apiToDB(r) {
     try{
-        if (empty) {
-            const apiCountries = await data();
-            await Country.bulkCreate(apiCountries);
-            console.log("Successfull apiToDB");           
-        } else {
-            next({ status: 404, message: 'Something went wrong' });
-        }
-    }
+          const apiCountries = await data();
+          await Country.bulkCreate(apiCountries);
+          console.log("Successfull apiToDB");           
+        } 
+    
     catch (error){
         console.log("error in apiToDB");
     }
 }
-
-apiToDB();
-
 
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
+  apiToDB();
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });

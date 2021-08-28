@@ -16,14 +16,32 @@
 }
 
 .link2{
+    display: block;
     text-decoration: none;
-    color: rgb(0, 225, 255);
-    padding: 20px;
+    color: rgb(0, 255, 234);
 }
 
 .links{
     display: flex;
     justify-content: center;
+    color: white;
+}
+
+.linkedin{
+    text-decoration: none;
+    margin-left: 5em;
+    text-align: center;
+    font-size: 2em;
+    color: white;
+}
+
+
+.github{
+    color: white;
+    text-decoration: none;
+    margin-right: 5em;
+    text-align: center;
+    font-size: 2em;
 }
 
 .text{
@@ -32,10 +50,20 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    border: solid 5px rgba(255, 255, 255, 0.37);
-    padding: 10px;
-    margin: 45px;
-    border-radius: 20px;
+    border: solid 0.4em rgba(255, 255, 255, 0.37);
+    padding: 1em;
+    margin: 4.5em;
+    border-radius: 1.5em;
     background-color: rgba(255, 255, 255, 0.178);
+}
+
+.imageg{
+    width: 6vh;
+    height: 6vh;
+}
+
+.imagel{
+    width: 6vh;
+    height: 6vh;
 }
 

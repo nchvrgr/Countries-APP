@@ -1,6 +1,5 @@
 body {
     align-items: center;
-    padding-top: 5vh;
     justify-content: center;
     background-size: 100%;
 }
@@ -57,12 +56,12 @@ body {
     align-content: center;
     }
     div.title{
-        font-size: 30px;
+        font-size: 3em;
     }
   }
   @media (min-width:601px) {
     div.title{
-        font-size: 80px;
+        font-size: 5em;
     } 
   }
 
@@ -92,7 +91,7 @@ body {
 
 
 .botonDiv{
-    margin-top: 15vh;
+    margin-top: 1.5em;
     display: flex;
     justify-content: center;
 }

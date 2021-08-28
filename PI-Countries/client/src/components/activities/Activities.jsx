@@ -24,8 +24,6 @@ function Activities() {
 		document.title= "Activities - CountriesApp";
 	}, [dispatch, activity]);
 
-    const [refresh, setRefresh] = useState(0);
-
     function handleChange(e){
         e.preventDefault();
         setActivity({

@@ -1,14 +1,14 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import style from './NavBar.module.css'
-import img from './globe.png'
+import React from "react";
+import { Link } from "react-router-dom";
+import style from "./NavBar.module.css";
+import img from "./globe.png";
 
 function NavBar() {
-    return (
+  return (
         <div className={style.nav}>
             <Link to = "/" className={style.link}>
                 <div className={style.logoDiv}>
-                    <img className={style.logo} src={img}/>
+                    <img alt="logo" className={style.logo} src={img}/>
                     <h2 className={style.title}>Countries App</h2>
                 </div>
             </Link> 
@@ -26,9 +26,10 @@ function NavBar() {
                     <p className={style.option}>About</p>
                 </Link>
             </div>
-
         </div>
-    )
+  );
 }
 
-export default NavBar
+export default NavBar;
+
+/**/

@@ -26,7 +26,7 @@ describe('Rutas', () => {
       agent.get('/countries').expect(200)
     );
 
-  //desde aquí empecé rutas countries
+  //tests de rutas countries
     it('should get 200 by searching ARG by id', () =>
       agent.get('/countries/ARG').expect(200)
     );

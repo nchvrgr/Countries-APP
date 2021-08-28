@@ -6,13 +6,14 @@ import style from './CountryDetail.module.css'
 
 function CountryDetail(props) {
     const dispatch = useDispatch();
+    var id = props.match.params.id;
+    var country = useSelector(state => state.countryDetail);
 
     useEffect( () => {
         dispatch(getCountryById(id));
         dispatch(getActivities());
-	}, []);
-    var id = props.match.params.id;
-    var country = useSelector(state => state.countryDetail);
+	}, [dispatch, id]);
+
     return (
         <>
             <div className={style.all}>
@@ -30,7 +31,7 @@ function CountryDetail(props) {
                         </div>
                     </div>
                     <div>
-                        <img src={country.image} className={style.image}/>
+                        <img alt="flag" src={country.image} className={style.image}/>
                     </div>
                 </div>:<p>THIS COUNTRY IS NOT AVAILABLE</p>}
             </div>
@@ -57,9 +58,7 @@ function CountryDetail(props) {
                 :<p>There's no activities</p>:<p>No activities</p>:<p>No country</p>
             }
             </div>
-
         </>
-
     )
 }
 

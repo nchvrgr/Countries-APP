@@ -1,5 +1,4 @@
 .cards{
-    padding: 10px;
     align-items: stretch;
     text-align: center;
     display: block;
@@ -7,15 +6,20 @@
 }
 
 .opcion{
-    background-color: rgba(0, 0, 0, 0.109);
+    background-color: rgba(255, 0, 0, 0.109);
     display: flex;
-    padding: 2px;
-    margin-left: 5px;
-    margin-right: 5px;
+    padding: 0.4em;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
     align-items: center;
     text-align: center;
+    align-content: center;
     border: solid 1px rgba(0, 0, 0, 0.082);
-    border-radius: 10px;
+    border-radius: 1em;
+}
+
+.opcionName{
+    margin: 0
 }
 
 .page{
@@ -26,24 +30,23 @@
 
 .pageLabel{
     color: rgb(0, 255, 255);
-    font-size: 20px;
+    font-size: 1em;
+    margin: 0;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .pageButtons{
     color: white;
     background-color: rgba(255, 255, 255, 0.288);
     border: solid 1px white;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding: 5px;
-    border-radius: 5px;
+    border-radius: 0.5em;
     text-decoration: none;
     box-shadow: none;
 }
 
 .opciones2{
     display: flex;
-    margin-left: 10px;
 }
 
 .opciones{
@@ -51,32 +54,29 @@
     text-align: center;
     align-items: center;
     justify-content: center;
-    padding: 5px;
-    font-size: 18px;
+    padding: 0.5em;
+    font-size: 1em;
     color: rgb(0, 255, 234);
     background-color: rgba(255, 255, 255, 0.096);
-    margin-left: 35px;
-    margin-right: 35px;
-    margin-top: 10px;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 0.5em;
     border: solid 1px rgba(255, 255, 255, 0.39);
-    border-radius: 10px;
+    border-radius: 1em;
 }
 
 .selectDiv{
     display: flex;
-    padding: 10px;
     align-items: center;
 }
 
 .select{
     outline: none;
-    margin: 10px;
+    margin: 0.5em;
     background-color: rgba(255, 255, 255, 0.281);
-    width: 150px;
-    height: 35px;
-    border-radius: 5px;
+    border-radius: 0.5em;
     border: solid 1px rgb(255, 255, 255);
     color:rgb(0, 255, 234);
-    font-size: 20px;
+    font-size: 1em;
 }
 

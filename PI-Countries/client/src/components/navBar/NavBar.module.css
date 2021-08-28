@@ -1,10 +1,8 @@
 .nav{
-    background-color: rgba(255, 33, 162, 0.404);
-    margin-top: -35px;
+    background-color: rgba(181, 108, 150, 0.404);
     display: flex;
+    text-align: center;
     justify-content: space-between;
-    border-bottom: solid 2px rgba(255, 255, 255, 0.253);
-    box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.555);
 }
 
 .logoDiv{
@@ -40,14 +38,15 @@
 .options{
     display: flex;
     justify-content: space-around;
-    width: 50%;
     align-items: center;
+    padding-right: 2em;
 }
 
 .option{
     color: white;
-    font-size: 22px;
+    font-size: 1.5em;
     text-shadow: rgba(0, 0, 0, 0.438) 1px 1px 1px;
+    padding-right: 2em;
 }
 
 .option:hover{

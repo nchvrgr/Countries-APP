@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getCountriesNames, getCountries } from '../../Store/actions';
 import style from './Search.module.css';
 
@@ -9,7 +9,6 @@ export default function Search() {
 	
 	const [busqueda, setBusqueda] = useState('');
 	
-
 	function buscar(busqueda) {
 		getCountriesNames(busqueda);
 	}
@@ -31,9 +30,7 @@ export default function Search() {
 		}else{
 			dispatch(getCountries());
 		}
-	}, [busqueda]);
-
-	const countries = useSelector((state) => state.countries);
+	}, [busqueda, dispatch]);
 
 	return (
 		<div>
@@ -46,7 +43,6 @@ export default function Search() {
 						onChange={(e) => handleChange(e.target.value)}
 					/>
 					<button type='submit' className={style.button}>Search</button>
-					
 				</div>
 			</form>
 		</div>

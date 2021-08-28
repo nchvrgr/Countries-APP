@@ -1,9 +1,10 @@
-import { GET_COUNTRIES , GET_COUNTRIES_NAME, GET_COUNTRY_ID, GET_ACTIVITIES } from './actions';
+import { GET_COUNTRIES, SET_CONTINENT, GET_COUNTRIES_NAME, GET_COUNTRY_ID, GET_ACTIVITIES, GET_CONTINENT } from './actions';
 
 const initialState = {
 	countries: [],
 	countryDetail: {},
-	activities: [] 
+	activities: [],
+	continent: ""
 };
 
 const reducer = (state = initialState, action) => {
@@ -27,6 +28,15 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				activities: action.payload 
+			}
+		case GET_CONTINENT:
+			return {
+				...state
+			}
+		case SET_CONTINENT:
+			return {
+				...state,
+				countries: state.countries.filter( country =>  country.continent === action.payload )
 			}
 		default:
 			return { ...state };

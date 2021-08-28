@@ -3,6 +3,8 @@ export const GET_COUNTRIES = 'GET_COUNTRIES';
 export const GET_COUNTRIES_NAME = 'GET_COUNTRIES_NAME';
 export const GET_COUNTRY_ID = "GET_COUNTRY_ID";
 export const GET_ACTIVITIES = "GET_ACTIVITIES";
+export const GET_CONTINENT = "GET_CONTINENT";
+export const SET_CONTINENT = 'SET_CONTINENT';
 
 export function getCountries() {
 	return function (dispatch) {
@@ -14,6 +16,23 @@ export function getCountries() {
 			});
 		});
 	};
+}
+
+export function setContinent(element){
+	return function (dispatch) {
+		return dispatch({
+			type: SET_CONTINENT,
+			payload: element
+		})
+	}
+}
+
+export function getContinent(){
+	return function (dispatch) {
+		return dispatch({
+			type: GET_CONTINENT
+		})
+	}
 }
 
 export function getIds(arr){
