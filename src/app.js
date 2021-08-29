@@ -31,4 +31,13 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   res.status(status).send(message);
 });
 
+const path = require('path');
+
+// server.use(express.static('client/build'));
+
+if(process.env.NODE_ENV === 'production'){
+  server.use(express.static(path.join(__dirname, 'client/build')));
+}
+
+
 module.exports = server;
